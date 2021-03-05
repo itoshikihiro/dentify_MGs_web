@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Identifying Marker Genes</title>
+        <link rel="stylesheet" type="text/css" href="./styles/github2-rightpart.css" media="all">
+        <link rel="stylesheet" type="text/css" href="./styles/github1-contents.css">
+        <link rel="stylesheet" href="./styles/zTreeStyle.css" type="text/css">
+        <style>
+            .ztree li a.curSelectedNode {
+                padding-top: 0px;
+                background-color: #FFE6B0;
+                color: black;
+                height: 16px;
+                border: 1px #FFB951 solid;
+                opacity: 0.8;
+            }
+            .ztree{
+                overflow: auto;
+                height:100%;
+                min-height: 200px;
+                top: 0px;
+            }
+        </style>
+    </head>
+    <body style="">
+        <div>
+            <div style="width:30%;">
+                <ul id="tree" class="ztree" style="width: 260px; overflow: auto; position: fixed; z-index: 2147483647; border: 0px none; left: 0px; bottom: 0px;">
+                </ul>
+            </div>
+            <div id="readme" style="width:70%;margin-left:25%;">
+                <article class="markdown-body">
+
+
+<h1>Identifying Marker Genes through fetchMG</h1>
+<h2>software preparation </h2>
+<ol start='' >
+<li><p>download fechMGs from a GitHub link: <a href='https://github.com/motu-tool/fetchMGs' target='_blank' class='url'>https://github.com/motu-tool/fetchMGs</a>, which is mentioned by a paper called Microbial abundance, activity and population genomic profiling with mOTUs2</p>
+<pre><code class='language-shell' lang='shell'>git clone https://github.com/motu-tool/fetchMGs.git
+</code></pre>
+<p>&nbsp;</p>
+</li>
+
+</ol>
+<h3>problems</h3>
+<ol start='' >
+<li><p>By reading the RUNME.sh, a bash excutable file from the excution folder, the RUNME.sh uses the main program, fetchMGs.pl, to generate an example output. The problems is the original bin folder does not contain necessary componenets in order to run the program smoothly.</p>
+<ul>
+<li><p>The necessary components are:</p>
+<ul>
+<li>HMMer3</li>
+<li>seqtk</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ol>
+<h3>solutions</h3>
+<ol start='' >
+<li><p>install all necessary components</p>
+<ol start='' >
+<li><p>install HMMer3</p>
+<ol start='' >
+<li><p>running the following commands within the folder &quot;fectchMGs/bin/&quot;</p>
+<pre><code class='language-shell' lang='shell'>wget http://eddylab.org/software/hmmer/hmmer.tar.gz 
+tar zxf hmmer.tar.gz
+cd hmmer-3.3.2
+./configure --prefix ../.
+make
+make check
+make install
+(cd easel; make install)
+cd ..
+cp /bin/hmmsearch .
+</code></pre>
+</li>
+
+</ol>
+</li>
+<li><p>install seqtk</p>
+<ol start='' >
+<li><p>running the following commands within the folder &quot;fectchMGs/bin/&quot;</p>
+<pre><code class='language-shell' lang='shell'>git clone https://github.com/lh3/seqtk.git
+cd seqtk
+make
+cd ..
+cp /seqtk/seqtk .
+</code></pre>
+</li>
+
+</ol>
+</li>
+
+</ol>
+<ol start='3' >
+<li>by running <code>bash fectchMGs/RUNME.sh</code> no error messages appeared due to the lack of necessary loss. </li>
+
+</ol>
+</li>
+
+</ol>
+<h2>dataset preparation</h2>
+<h3>problems</h3>
+<ol>
+<li>There are multiple datasets available for <a href='https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&amp;id=83332'>Mycobacterium tuberculosis H37Rv</a>. It is hard to decide which datasets should be the input of the software from a pure Computer Science background student&#39;s point of view. </li>
+
+</ol>
+<h3>solutions</h3>
+<ol>
+<li><p>See what input does the software accepts</p>
+<ul>
+<li><p>it takes two files as one input</p>
+<ul>
+<li>a .fna file</li>
+<li>a .faa file</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li><p>searching similar input files for <a href='https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&amp;id=83332'>Mycobacterium tuberculosis H37Rv</a></p>
+</li>
+<li><p>failed on finding out exact format</p>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+<h2>What have I done?</h2>
+<ul>
+<li>successfully installed fetchMGs</li>
+<li>successfully run the examples shown in fetchMGs</li>
+<li>failed to find out which datasets of Mycobacterium tuberculosis should be the input of fetchMGs</li>
+
+</ul>
+                </article>
+            </div>
+        </div>
+    <script src="./styles/jquery-1.10.2.min.js"></script>
+    <script src="./styles/jquery.ztree.all-3.5.min.js"></script>
+    <script src="./styles/jquery.ztree_toc.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#tree').ztree_toc({
+                is_auto_number:false,
+                documment_selector:'.markdown-body',
+                is_expand_all: true
+            });
+        });
+    </script>
+    </body>
+</html>
