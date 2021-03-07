@@ -138,7 +138,7 @@ cp /seqtk/seqtk .
 <pre><code class='language-shell' lang='shell'>./fetchMGs.pl -m extraction -p -v -o results_protein /Users/hiro/Documents/projects/fetchMGs/datasets/GCA_000195955.2_ASM19595v2_protein.faa
 </code></pre>
 </li>
-<li><p>The only difference is about the option <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.975ex" height="2.11ex" viewBox="0 -655.4 1281 908.7" role="img" focusable="false" style="vertical-align: -0.588ex;"><defs><path stroke-width="0" id="E4-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E4-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E4-MJMAIN-2212" x="0" y="0"></use><use xlink:href="#E4-MJMATHI-70" x="778" y="0"></use></g></svg></span><script type="math/tex">-p</script> which specifies protein_only if nucleotide sequences file for the protein sequence is not available. </p>
+<li><p>The only difference is about the option <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.975ex" height="2.11ex" viewBox="0 -655.4 1281 908.7" role="img" focusable="false" style="vertical-align: -0.588ex;"><defs><path stroke-width="0" id="E1-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E1-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E1-MJMAIN-2212" x="0" y="0"></use><use xlink:href="#E1-MJMATHI-70" x="778" y="0"></use></g></svg></span><script type="math/tex">-p</script> which specifies protein_only if nucleotide sequences file for the protein sequence is not available. </p>
 </li>
 
 </ol>
@@ -567,6 +567,57 @@ bias_std = statistics.stdev(bias_scores)
 <li>analyzing the results by comparing accuracy and bias of the prediction based on Mycobacterium tuberculosis H37Rv and the prediction based on the provided example. </li>
 
 </ul>
+<h2>Conclusion</h2>
+<ol>
+<li><p>by reading the source code of fetchMGs, although I haven&#39;t learned about Perl programing language, I quite understand what the software did at the background. </p>
+<ol>
+<li>it uses HMMer as the main software to process the searching by using cutoffs from the verybesthit.txt in the lib folder. </li>
+<li>verybesthit.txt is the model description of the extracting marker gene task. </li>
+<li>the actual model is individual files in lib folder naming pattern is &quot;COG****.hmm&quot; </li>
+
+</ol>
+</li>
+<li><p>the software is used to find 40 universal single copy marker genes abbreviated as marker genes in the protein sequence</p>
+</li>
+
+</ol>
+<h2>Remaining questions</h2>
+<ol>
+<li><p>What does cutoff mean in the context?</p>
+<ul>
+<li><p>I could not find any information for the definition of cutoff online other than the following</p>
+<ul>
+<li>cutoffs have an underlying relation to health status and are one of the important quantitative criteria against which biomarker outputs are compared. </li>
+
+</ul>
+<ul>
+<li>cutoffs are important for making good decisions about how to translate what we know about diet, nutrition, and health into evidence-based standards of care or programs and are important for comparing data across studies, regions, and countries. </li>
+
+</ul>
+</li>
+<li><p>however, when I put the definition into the program, I don&#39;t understand how would this be useful for the program. </p>
+</li>
+
+</ul>
+</li>
+<li><p>I understand extracting 40 marker gene is important to reconstruct the phylogenetic tree, but how to build such tree is my question. </p>
+<ol>
+<li><p>by reading the article called &#39;Toward Automatic Reconstruction of a Highly Resolved Tree of Life&#39;, I still have questions about how to use 40 marker genes to reconstruct the phylogenetic tree. </p>
+</li>
+<li><p>If I understand correctly</p>
+<ol>
+<li>using alignment technology to align the 40 extracted marker gene with Archaeal, Bacterial and Eukarotic organisms. The best scored alignment will be classified to be a member of one of the three groups. (Clustering)</li>
+<li>form every possible tree for all sequenced gene. Using evolutional model to decide which tree is the most possible tree. </li>
+
+</ol>
+</li>
+<li><p>Since I am not biologist, to understand a fully biological question is hard for me. </p>
+</li>
+
+</ol>
+</li>
+
+</ol>
 <p>&nbsp;</p>
 
 
