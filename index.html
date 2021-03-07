@@ -32,8 +32,8 @@
                 <article class="markdown-body">
 
 
-<h1>Identifying Marker Genes through fetchMG</h1>
-<h2>software preparation </h2>
+<h1>Report 03/07/2021</h1>
+<h2>software preparation</h2>
 <ol start='' >
 <li><p>download fechMGs from a GitHub link: <a href='https://github.com/motu-tool/fetchMGs' target='_blank' class='url'>https://github.com/motu-tool/fetchMGs</a>, which is mentioned by a paper called Microbial abundance, activity and population genomic profiling with mOTUs2</p>
 <pre><code class='language-shell' lang='shell'>git clone https://github.com/motu-tool/fetchMGs.git
@@ -65,16 +65,16 @@
 <li><p>install HMMer3</p>
 <ol start='' >
 <li><p>running the following commands within the folder &quot;fectchMGs/bin/&quot;</p>
-<pre><code class='language-shell' lang='shell'>wget http://eddylab.org/software/hmmer/hmmer.tar.gz 
-tar zxf hmmer.tar.gz
-cd hmmer-3.3.2
-./configure --prefix ../.
-make
-make check
-make install
-(cd easel; make install)
-cd ..
-cp /bin/hmmsearch .
+<pre><code class='language-shell' lang='shell'> wget http://eddylab.org/software/hmmer/hmmer.tar.gz 
+ tar zxf hmmer.tar.gz
+ cd hmmer-3.3.2
+ ./configure --prefix ../.
+ make
+ make check
+ make install
+ (cd easel; make install)
+ cd ..
+ cp /bin/hmmsearch .
 </code></pre>
 </li>
 
@@ -93,10 +93,8 @@ cp /seqtk/seqtk .
 
 </ol>
 </li>
-
-</ol>
-<ol start='3' >
-<li>by running <code>bash fectchMGs/RUNME.sh</code> no error messages appeared due to the lack of necessary loss. </li>
+<li><p>by running <code>bash fectchMGs/RUNME.sh</code> no error messages appeared due to the lack of necessary loss. </p>
+</li>
 
 </ol>
 </li>
@@ -104,12 +102,12 @@ cp /seqtk/seqtk .
 </ol>
 <h2>dataset preparation</h2>
 <h3>problems</h3>
-<ol>
+<ol start='' >
 <li>There are multiple datasets available for <a href='https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&amp;id=83332'>Mycobacterium tuberculosis H37Rv</a>. It is hard to decide which datasets should be the input of the software from a pure Computer Science background student&#39;s point of view. </li>
 
 </ol>
 <h3>solutions</h3>
-<ol>
+<ol start='' >
 <li><p>See what input does the software accepts</p>
 <ul>
 <li><p>it takes two files as one input</p>
@@ -124,16 +122,453 @@ cp /seqtk/seqtk .
 </li>
 <li><p>searching similar input files for <a href='https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&amp;id=83332'>Mycobacterium tuberculosis H37Rv</a></p>
 </li>
-<li><p>failed on finding out exact format</p>
+<li><p>found out the software can take only one input file by carefully reading the instructions</p>
+<ol start='' >
+<li><p>the software takes two input files </p>
+<ol start='' >
+<li>.fna file (nucleotide sequences file for protein sequences) which is not available for Mycobacterium tuberculosis H37Rv</li>
+<li>.faa file (protein sequence file)</li>
+
+</ol>
 </li>
 
 </ol>
+</li>
+<li><p>to overcome the problem, type the following command into the terminal</p>
+<pre><code class='language-shell' lang='shell'>./fetchMGs.pl -m extraction -p -v -o results_protein /Users/hiro/Documents/projects/fetchMGs/datasets/GCA_000195955.2_ASM19595v2_protein.faa
+</code></pre>
+</li>
+<li><p>The only difference is about the option <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.975ex" height="2.11ex" viewBox="0 -655.4 1281 908.7" role="img" focusable="false" style="vertical-align: -0.588ex;"><defs><path stroke-width="0" id="E4-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E4-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E4-MJMAIN-2212" x="0" y="0"></use><use xlink:href="#E4-MJMATHI-70" x="778" y="0"></use></g></svg></span><script type="math/tex">-p</script> which specifies protein_only if nucleotide sequences file for the protein sequence is not available. </p>
+</li>
+
+</ol>
+<h2>Results </h2>
+<ul>
+<li><p>From the previous command, the software output all results in a folder called, <em>results_protein</em>. </p>
+</li>
+<li><p>From the folder, we have </p>
+<ul>
+<li><p>hmmResults folder for output files from HMMer 3</p>
+</li>
+<li><p>temp folder for identifiers of proteins identified homologous to any marker gene</p>
+</li>
+<li><p>40 x COGxxxx/faa files for sequences of extracted proteins</p>
+</li>
+<li><p>marker_gene_scores.table contains the following</p>
+<ul>
+<li>protein_sequence_id</li>
+<li>score</li>
+<li>marker gene ID</li>
+<li>genome identifier (not available for the project)</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<h2>analysis of results</h2>
+<ul>
+<li>By extracting the hmm software&#39;s output, we can know each prediction&#39;s accuracy and bias</li>
+<li>By writing the following python program:</li>
+
+</ul>
+<pre><code class='language-python' lang='python'># import all necessary packages
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+</code></pre>
+<pre><code class='language-python' lang='python'>column_names = &quot;&quot;
+df = [40]
+with open(&#39;results_protein/hmmResults/markerGenes.COG0012.dom&#39;) as f:
+    data = f.readlines()
+    for i in range(len(data)):
+        if i == 1:
+          column_names = data[i]
+        if i == 3:
+            df[0]=data[i]
+
+print(column_names)
+print(df)
+</code></pre>
+<pre><code># target name        accession   tlen query name           accession   qlen   E-value  score  bias   #  of  c-Evalue  i-Evalue  score  bias  from    to  from    to  from    to  acc description of target
+
+[&#39;CCP43865.1           -            357 COG0012              -            366  2.3e-162  538.3   0.0   1   1  6.3e-166  2.5e-162  538.1   0.0     1   366     1   357     1   357 0.98 Probable GTP binding protein [Mycobacterium tuberculosis H37Rv]\n&#39;]
+</code></pre>
+<pre><code class='language-python' lang='python'>from os import walk
+
+_, _, filenames = next(walk(&#39;results_protein/temp/&#39;))
+</code></pre>
+<pre><code class='language-python' lang='python'>filenames
+&gt; [&#39;COG0533.IDs.txt&#39;,
+ &#39;COG0541.IDs.txt&#39;,
+ &#39;COG0086.IDs.txt&#39;,
+ &#39;COG0096.IDs.txt&#39;,
+ &#39;COG0103.IDs.txt&#39;,
+ &#39;COG0185.IDs.txt&#39;,
+ &#39;COG0102.IDs.txt&#39;,
+ &#39;COG0018.IDs.txt&#39;,
+ &#39;COG0184.IDs.txt&#39;,
+ &#39;COG0522.IDs.txt&#39;,
+ &#39;COG0097.IDs.txt&#39;,
+ &#39;COG0087.IDs.txt&#39;,
+ &#39;COG0124.IDs.txt&#39;,
+ &#39;COG0172.IDs.txt&#39;,
+ &#39;COG0100.IDs.txt&#39;,
+ &#39;COG0186.IDs.txt&#39;,
+ &#39;COG0552.IDs.txt&#39;,
+ &#39;COG0085.IDs.txt&#39;,
+ &#39;COG0012.IDs.txt&#39;,
+ &#39;COG0094.IDs.txt&#39;,
+ &#39;COG0215.IDs.txt&#39;,
+ &#39;COG0197.IDs.txt&#39;,
+ &#39;COG0098.IDs.txt&#39;,
+ &#39;COG0088.IDs.txt&#39;,
+ &#39;COG0200.IDs.txt&#39;,
+ &#39;COG0081.IDs.txt&#39;,
+ &#39;COG0091.IDs.txt&#39;,
+ &#39;COG0090.IDs.txt&#39;,
+ &#39;COG0080.IDs.txt&#39;,
+ &#39;COG0016.IDs.txt&#39;,
+ &#39;COG0525.IDs.txt&#39;,
+ &#39;COG0099.IDs.txt&#39;,
+ &#39;COG0052.IDs.txt&#39;,
+ &#39;COG0201.IDs.txt&#39;,
+ &#39;COG0092.IDs.txt&#39;,
+ &#39;COG0049.IDs.txt&#39;,
+ &#39;COG0202.IDs.txt&#39;,
+ &#39;COG0093.IDs.txt&#39;,
+ &#39;COG0256.IDs.txt&#39;,
+ &#39;COG0048.IDs.txt&#39;,
+ &#39;COG0495.IDs.txt&#39;]
+</code></pre>
+<pre><code class='language-python' lang='python'>query_names=[]
+def extract_query_name(str):
+    return str[0:7]
+
+for i in filenames:
+    print(i)
+    query_names.append(extract_query_name(i))
+</code></pre>
+<pre><code class='language-python' lang='python'>query_names
+&gt;[&#39;COG0533&#39;,
+ &#39;COG0541&#39;,
+ &#39;COG0086&#39;,
+ &#39;COG0096&#39;,
+ &#39;COG0103&#39;,
+ &#39;COG0185&#39;,
+ &#39;COG0102&#39;,
+ &#39;COG0018&#39;,
+ &#39;COG0184&#39;,
+ &#39;COG0522&#39;,
+ &#39;COG0097&#39;,
+ &#39;COG0087&#39;,
+ &#39;COG0124&#39;,
+ &#39;COG0172&#39;,
+ &#39;COG0100&#39;,
+ &#39;COG0186&#39;,
+ &#39;COG0552&#39;,
+ &#39;COG0085&#39;,
+ &#39;COG0012&#39;,
+ &#39;COG0094&#39;,
+ &#39;COG0215&#39;,
+ &#39;COG0197&#39;,
+ &#39;COG0098&#39;,
+ &#39;COG0088&#39;,
+ &#39;COG0200&#39;,
+ &#39;COG0081&#39;,
+ &#39;COG0091&#39;,
+ &#39;COG0090&#39;,
+ &#39;COG0080&#39;,
+ &#39;COG0016&#39;,
+ &#39;COG0525&#39;,
+ &#39;COG0099&#39;,
+ &#39;COG0052&#39;,
+ &#39;COG0201&#39;,
+ &#39;COG0092&#39;,
+ &#39;COG0049&#39;,
+ &#39;COG0202&#39;,
+ &#39;COG0093&#39;,
+ &#39;COG0256&#39;,
+ &#39;COG0048&#39;,
+ &#39;COG0495&#39;]
+</code></pre>
+<pre><code class='language-python' lang='python'>import re
+target_names=[]
+for i in filenames:
+    with open(&#39;results_protein/temp/&#39;+i) as f:
+        target_names.append(f.readline().replace(&#39;\n&#39;,&#39;&#39;))
+</code></pre>
+<pre><code class='language-python' lang='python'>target_names
+&gt; [&#39;CCP46241.1&#39;,
+ &#39;CCP45718.1&#39;,
+ &#39;CCP43411.1&#39;,
+ &#39;CCP43462.1&#39;,
+ &#39;CCP46264.1&#39;,
+ &#39;CCP43449.1&#39;,
+ &#39;CCP46265.1&#39;,
+ &#39;CCP44049.1&#39;,
+ &#39;CCP45584.1&#39;,
+ &#39;CCP46280.1&#39;,
+ &#39;CCP43463.1&#39;,
+ &#39;CCP43445.1&#39;,
+ &#39;CCP45376.1&#39;,
+ &#39;CCP46663.1&#39;,
+ &#39;CCP46281.1&#39;,
+ &#39;CCP43454.1&#39;,
+ &#39;CCP45723.1&#39;,
+ &#39;CCP43410.1&#39;,
+ &#39;CCP43865.1&#39;,
+ &#39;CCP43460.1&#39;,
+ &#39;CCP46403.1&#39;,
+ &#39;CCP43452.1&#39;,
+ &#39;CCP43465.1&#39;,
+ &#39;CCP43446.1&#39;,
+ &#39;CCP43467.1&#39;,
+ &#39;CCP43384.1&#39;,
+ &#39;CCP43450.1&#39;,
+ &#39;CCP43448.1&#39;,
+ &#39;CCP43383.1&#39;,
+ &#39;CCP44414.1&#39;,
+ &#39;CCP45241.1&#39;,
+ &#39;CCP46282.1&#39;,
+ &#39;CCP45692.1&#39;,
+ &#39;CCP43477.1&#39;,
+ &#39;CCP43451.1&#39;,
+ &#39;CCP43426.1&#39;,
+ &#39;CCP46279.1&#39;,
+ &#39;CCP43458.1&#39;,
+ &#39;CCP43464.1&#39;,
+ &#39;CCP43425.1&#39;,
+ &#39;CCP42763.1&#39;]
+</code></pre>
+<pre><code class='language-python' lang='python'>filenames = []
+for i in query_names:
+    filenames.append(&#39;results_protein/hmmResults/markerGenes.&#39;+i+&#39;.dom&#39;)
+</code></pre>
+<pre><code class='language-python' lang='python'>filenames
+&gt; [&#39;results_protein/hmmResults/markerGenes.COG0533.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0541.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0086.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0096.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0103.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0185.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0102.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0018.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0184.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0522.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0097.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0087.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0124.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0172.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0100.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0186.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0552.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0085.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0012.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0094.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0215.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0197.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0098.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0088.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0200.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0081.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0091.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0090.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0080.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0016.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0525.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0099.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0052.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0201.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0092.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0049.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0202.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0093.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0256.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0048.dom&#39;,
+ &#39;results_protein/hmmResults/markerGenes.COG0495.dom&#39;]
+</code></pre>
+<pre><code class='language-python' lang='python'>data = []
+for i in filenames:
+    with open(i) as f:
+         data.append(f.readlines()[3])
+</code></pre>
+<pre><code class='language-python' lang='python'>data[0].split()
+&gt; [&#39;CCP46241.1&#39;,
+ &#39;-&#39;,
+ &#39;344&#39;,
+ &#39;COG0533&#39;,
+ &#39;-&#39;,
+ &#39;1171&#39;,
+ &#39;3e-164&#39;,
+ &#39;547.2&#39;,
+ &#39;23.0&#39;,
+ &#39;1&#39;,
+ &#39;1&#39;,
+ &#39;9.1e-168&#39;,
+ &#39;3.6e-164&#39;,
+ &#39;546.9&#39;,
+ &#39;23.0&#39;,
+ &#39;563&#39;,
+ &#39;884&#39;,
+ &#39;1&#39;,
+ &#39;338&#39;,
+ &#39;1&#39;,
+ &#39;343&#39;,
+ &#39;0.96&#39;,
+ &#39;Probable&#39;,
+ &#39;O-sialoglycoprotein&#39;,
+ &#39;endopeptidase&#39;,
+ &#39;Gcp&#39;,
+ &#39;(glycoprotease)&#39;,
+ &#39;[Mycobacterium&#39;,
+ &#39;tuberculosis&#39;,
+ &#39;H37Rv]&#39;]
+</code></pre>
+<pre><code class='language-python' lang='python'>data[0].split().index(&#39;0.96&#39;)
+&gt; 21
+</code></pre>
+<pre><code class='language-python' lang='python'>data[0].split().index(&#39;23.0&#39;)
+&gt; 8
+</code></pre>
+<pre><code class='language-python' lang='python'>def extract_acc_score(str_d):
+    return float(str_d.split()[21])
+</code></pre>
+<pre><code class='language-python' lang='python'>def extract_bias_score(str_d):
+    return float(str_d.split()[8])
+</code></pre>
+<pre><code class='language-python' lang='python'>acc_scores = []
+bias_scores = []
+for i in data:
+    acc_scores.append(extract_acc_score(i))
+    bias_scores.append(extract_bias_score(i))
+</code></pre>
+<pre><code class='language-python' lang='python'>acc_scores
+&gt; [0.96,
+ 0.93,
+ 0.93,
+ 0.98,
+ 0.92,
+ 0.96,
+ 0.97,
+ 0.91,
+ 0.99,
+ 0.98,
+ 0.98,
+ 0.96,
+ 0.96,
+ 0.97,
+ 0.96,
+ 0.74,
+ 0.91,
+ 0.96,
+ 0.98,
+ 0.98,
+ 0.94,
+ 0.98,
+ 0.89,
+ 0.96,
+ 0.96,
+ 0.98,
+ 0.88,
+ 0.99,
+ 0.98,
+ 0.95,
+ 0.93,
+ 0.99,
+ 0.88,
+ 0.94,
+ 0.85,
+ 1.0,
+ 0.89,
+ 0.99,
+ 0.97,
+ 0.91,
+ 0.92]
+</code></pre>
+<pre><code class='language-python' lang='python'>bias_scores
+&gt; [23.0,
+ 9.1,
+ 0.0,
+ 0.0,
+ 0.2,
+ 2.7,
+ 0.0,
+ 0.0,
+ 4.7,
+ 2.7,
+ 0.5,
+ 6.1,
+ 0.0,
+ 0.0,
+ 3.8,
+ 4.9,
+ 0.0,
+ 0.5,
+ 0.0,
+ 0.1,
+ 0.0,
+ 0.4,
+ 6.5,
+ 3.9,
+ 5.7,
+ 1.3,
+ 26.0,
+ 8.0,
+ 4.2,
+ 0.0,
+ 0.0,
+ 6.0,
+ 0.0,
+ 26.4,
+ 7.4,
+ 0.0,
+ 0.0,
+ 1.4,
+ 8.2,
+ 6.7,
+ 0.0]
+</code></pre>
+<pre><code class='language-python' lang='python'>import statistics
+
+acc_mean = statistics.mean(acc_scores)
+acc_std = statistics.stdev(acc_scores)
+</code></pre>
+<pre><code class='language-python' lang='python'>acc_mean
+&gt; 0.9441463414634146
+</code></pre>
+<pre><code class='language-python' lang='python'>acc_std
+&gt; 0.04893749123913574
+</code></pre>
+<pre><code class='language-python' lang='python'>bias_mean = statistics.mean(bias_scores)
+bias_std = statistics.stdev(bias_scores)
+</code></pre>
+<pre><code class='language-python' lang='python'>bias_mean
+&gt; 4.15609756097561
+</code></pre>
+<pre><code class='language-python' lang='python'>bias_std
+&gt; 6.647821025737975
+</code></pre>
+<p>&nbsp;</p>
+<ul>
+<li>we can have the mean of accuracy = 0.94, the std of accuracy = 0.04, the mean of bias = 4.16, and the std of bias = 6.65</li>
+<li>By writing the exact same code for the example prediction, we have the mean of accuracy = 0.96, the std of accuracy = 0.03, the mean of bias = 3.74, and the std of bias = 5.78</li>
+<li>By comparing two results, I could only claim that the results of this prediction is relatively good because the mean of accuracy is only 0.02 less than the mean of example accuracy. </li>
+
+</ul>
 <p>&nbsp;</p>
 <h2>What have I done?</h2>
 <ul>
 <li>successfully installed fetchMGs</li>
 <li>successfully run the examples shown in fetchMGs</li>
-<li>failed to find out which datasets of Mycobacterium tuberculosis should be the input of fetchMGs</li>
+<li>successfully run the marker gene prediction on the protein sequence of Mycobacterium tuberculosis H37Rv</li>
+<li>analyzing the results by comparing accuracy and bias of the prediction based on Mycobacterium tuberculosis H37Rv and the prediction based on the provided example. </li>
+
+</ul>
+<p>&nbsp;</p>
+
 
 </ul>
                 </article>
