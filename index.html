@@ -31,6 +31,90 @@
             <div id="readme" style="width:70%;margin-left:25%;">
                 <article class="markdown-body">
 
+<h1>03/11/2021</h1>
+<h2>input files</h2>
+<h3>what the input file looks like</h3>
+<ul>
+<li><p>the input dataset was downloaded from <a href='https://www.ncbi.nlm.nih.gov/labs/gquery/all/?term=Mycobacterium+tuberculosis+H37Rv&amp;utm_source=Datasets' target='_blank' class='url'>https://www.ncbi.nlm.nih.gov/labs/gquery/all/?term=Mycobacterium+tuberculosis+H37Rv&utm_source=Datasets</a></p>
+<ul>
+<li>with the following selection in the download button. </li>
+<li><img src="03112021.assets/Screen%20Shot%202021-03-11%20at%203.23.06%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-11 at 3.23.06 PM"></li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="03112021.assets/Screen%20Shot%202021-03-11%20at%203.16.00%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-11 at 3.16.00 PM"></p>
+<p>Figure 1. screenshot of the input file</p>
+<p>	Figure 1 shows a screenshot of the input file of fetchMGs. The input file is a fasta file which which is a collection of protein sequences of Mycobacterium tuberculosis H37Rv concatenated together. </p>
+<p><img src="03112021.assets/Screen%20Shot%202021-03-11%20at%203.12.23%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-11 at 3.12.23 PM"></p>
+<p>Figure 2. screen shot of a single sequence from the input file</p>
+<p>	From Figure 2, we can see one sequence of Mycobacterium tuberculosis H37Rv. From the description line, which is the first line starting with a &quot;&gt;&quot; (greater-than) sign, we have a unique id (CCP43865.1), sequence description (Probable GTP binding protein), and where the sequence comes from (Mycobacterium tuberculosis H37Rv). Following the description line, it shows the actual sequence for the protein. </p>
+<p>	The reason that I have chosen a collection of protein sequences over than other sequences is that the program indicates its input file to be a fasta file with protein coding sequences, and optionally the nucleotide sequences of the proteins. The nucleotide sequences of the proteins is optional because protein sequence is made by 20 different amino acids, and amino acids can be translated to nucleotide codon. Therefore, it does not hurt if we don&#39;t have the nucleotide sequences because they basically describes the same thing. </p>
+<p>&nbsp;</p>
+<h2>output file</h2>
+<p><img src="03112021.assets/output_dir_tree.jpg" referrerpolicy="no-referrer" alt="output_dir_tree"></p>
+<p>Figure 3. a tree structure of output folder</p>
+<p>	Figure 3 shows a tree structure of the output folder. The square shape represents a folder, and the round shape represents a file. Therefore, the output folder consists 40 x COGxxxx.faa files, a temp folder consisting 40 x COGxxxx.IDs.txt, a hmmResults folder consisting 40 x markerGenes.COGxxxx.dom and 40 x markerGenes.COGxxxx.out. </p>
+<p>	COGxxxx represents the name of a marker gene. The list of 40 MGs are the following</p>
+<figure><table>
+<thead>
+<tr><th>COG</th><th>Annotation</th></tr></thead>
+<tbody><tr><td>COG0012</td><td>Predicted GTPase, probable translation factor</td></tr><tr><td>COG0016</td><td>Phenylalanyl-tRNA synthetase alpha subunit</td></tr><tr><td>COG0018</td><td>Arginyl-tRNA synthetase</td></tr><tr><td>COG0048</td><td>Ribosomal protein S12</td></tr><tr><td>COG0049</td><td>Ribosomal protein S7</td></tr><tr><td>COG0052</td><td>Ribosomal protein S2</td></tr><tr><td>COG0080</td><td>Ribosomal protein L11</td></tr><tr><td>COG0081</td><td>Ribosomal protein L1</td></tr><tr><td>COG0085</td><td>DNA-directed RNA polymerase, beta subunit/140 kD subunit</td></tr><tr><td>COG0087</td><td>Ribosomal protein L3</td></tr><tr><td>COG0088</td><td>Ribosomal protein L4</td></tr><tr><td>COG0090</td><td>Ribosomal protein L2</td></tr><tr><td>COG0091</td><td>Ribosomal protein L22</td></tr><tr><td>COG0092</td><td>Ribosomal protein S3</td></tr><tr><td>COG0093</td><td>Ribosomal protein L14</td></tr><tr><td>COG0094</td><td>Ribosomal protein L5</td></tr><tr><td>COG0096</td><td>Ribosomal protein S8</td></tr><tr><td>COG0097</td><td>Ribosomal protein L6P/L9E</td></tr><tr><td>COG0098</td><td>Ribosomal protein S5</td></tr><tr><td>COG0099</td><td>Ribosomal protein S13</td></tr><tr><td>COG0100</td><td>Ribosomal protein S11</td></tr><tr><td>COG0102</td><td>Ribosomal protein L13</td></tr><tr><td>COG0103</td><td>Ribosomal protein S9</td></tr><tr><td>COG0124</td><td>Histidyl-tRNA synthetase</td></tr><tr><td>COG0172</td><td>Seryl-tRNA synthetase</td></tr><tr><td>COG0184</td><td>Ribosomal protein S15P/S13E</td></tr><tr><td>COG0185</td><td>Ribosomal protein S19</td></tr><tr><td>COG0186</td><td>Ribosomal protein S17</td></tr><tr><td>COG0197</td><td>Ribosomal protein L16/L10E</td></tr><tr><td>COG0200</td><td>Ribosomal protein L15</td></tr><tr><td>COG0201</td><td>Preprotein translocase subunit SecY</td></tr><tr><td>COG0202</td><td>DNA-directed RNA polymerase, alpha subunit/40 kD subunit</td></tr><tr><td>COG0215</td><td>Cysteinyl-tRNA synthetase</td></tr><tr><td>COG0256</td><td>Ribosomal protein L18</td></tr><tr><td>COG0495</td><td>Leucyl-tRNA synthetase</td></tr><tr><td>COG0522</td><td>Ribosomal protein S4 and related proteins</td></tr><tr><td>COG0525</td><td>Valyl-tRNA synthetase</td></tr><tr><td>COG0533</td><td>Metal-dependent proteases with possible chaperone activity</td></tr><tr><td>COG0541</td><td>Signal recognition particle GTPase (Ffh)</td></tr><tr><td>COG0552</td><td>Signal recognition particle GTPase (FtsY)</td></tr></tbody>
+</table></figure>
+<h3>what the input file looks like</h3>
+<h4>COGxxxx.faa</h4>
+<p>taking one file as example, COG0012.faa. </p>
+<p><img src="03112021.assets/Screen%20Shot%202021-03-11%20at%209.10.53%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-11 at 9.10.53 PM"></p>
+<p>Figure 4. screenshot of one COGxxxx.faa file</p>
+<p>	Figure 4 shows a screenshot of COG0012.faa file. The file consists two-line information. The first line is the predicted or searched corresponding protein sequence&#39;s id of Mycobacterium tuberculosis H37Rv. The second line is the corresponding protein sequence of Mycobacterium tuberculosis H37Rv. It is worthy to notice that the sequence is the <strong>original</strong> sequence extracted from the input dataset. </p>
+<h4>temp/COGxxxx.IDs.txt</h4>
+<p>taking one file as example, COG0012.IDs.txt. </p>
+<p><img src="03112021.assets/Screen%20Shot%202021-03-11%20at%209.15.37%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-11 at 9.15.37 PM"></p>
+<p>Figure 5. screenshot of one COGxxxx.IDs.txt in temp folder. </p>
+<p>	Figure 5 shows a screenshot of COG0012.IDs.txt file. The file consists only one line. The line shows the searched corresponding protein sequence&#39;s id of Mycobacterium tuberculosis H37Rv. </p>
+<h4>hmmResults/markerGenes.COGxxxx.dom and hmmResults/markerGenes.COGxxxx.out</h4>
+<p>taking one file as example, markerGenes.COG0012.dom</p>
+<p><img src="03112021.assets/Screen%20Shot%202021-03-11%20at%209.18.29%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-11 at 9.18.29 PM"></p>
+<p>Figure 6. screenshot of one markerGenes.COGxxxx.dom in the hmmResults folder</p>
+<p>	Figure 6 shows a screenshot of markerGenes.COG0012.dom file. The file consists a table which indicates why hmmer program choose the protein sequence to be the result of COG0012 MG. </p>
+<p>taking one file as example, markerGenes.COG0012.out</p>
+<p><img src="03112021.assets/Screen%20Shot%202021-03-11%20at%209.34.36%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-11 at 9.34.36 PM"></p>
+<p>Figure 7. screeshot of one markerGenes.COGxxxx.out in the hmmResults folder</p>
+<p>	Figure 7 shows a screenshot of markerGenes.COGxxxx.out file. The file consists two tables and one dictionary. This file is mainly used by hmmer program, and can be used to analyze how and why hmmer select the specific target. </p>
+<h2>marker gene folder</h2>
+<p><img src="03112021.assets/MG_dir.jpg" referrerpolicy="no-referrer" alt="MG_dir"></p>
+<p>Figure 8. a tree structure of the lib folder. </p>
+<p>	Figure 8 shows a tree structure in the lib folder. The lib folder consists 40 x COGxxxx.hmm, MG_BitScoreCutoffs.allhits.txt, MG_BitScoreCutoffs.uncalibrated.txt, and MG_bitScoreCutoffs.verybesthit.txt. </p>
+<p>	Take COG0012.hmm as an example. </p>
+<p><img src="03112021.assets/Screen%20Shot%202021-03-11%20at%2011.35.03%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-11 at 11.35.03 PM"></p>
+<p>Figure 9. screenshot of COG0012.hmm</p>
+<p>	Figure 9 shows a screenshot of COG0012.hmm file. This is the actual reference marker gene profile which is generated by HMMER v3. </p>
+<p>	Since we want to add more marker genes for searching, we are going to add similar marker gene profile here. The profile can be generated by a stockholm alignment file. </p>
+<p><img src="03112021.assets/Screen%20Shot%202021-03-11%20at%2011.39.14%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-11 at 11.39.14 PM"></p>
+<p>Figure 10. Stockholm alignment file. </p>
+<p>After we have a stockholm alignment file, we can run the following command to build a profile from the alignment. </p>
+<pre><code class='language-shell' lang='shell'># using hmmbuild to construct xxxx.hmm profile by using xxxx.sto alignment
+hmmbuild xxxx.hmm xxxx.sto
+</code></pre>
+<h3>problem</h3>
+<p>However, in order to modify the program to detect more MGs, we are missing another component, CUTOFFs. In other words, we are missing three files MG_BitScoreCutoffs.allhits.txt, MG_BitScoreCutoffs.uncalibrated.txt, and MG_bitScoreCutoffs.verybesthit.txt in the lib folder. </p>
+<p>The question is the paper did not disclose how to choose an optimized cutoffs for each marker gene. Furthermore, the relevant papers did not have a demonstration how to generate such cutoff score for each marker gene. </p>
+<h3>solution</h3>
+<ul>
+<li><p>By reading the source code from fetchMGs, I know the CUTOFFS are not predefined by the authors. </p>
+</li>
+<li><p>The MG_BitScoreCutoffs.allhits.txt and MG_bitScoreCutoffs.verybesthit.txt can be generated by MG_BitScoreCutoffs.uncalibrated.txt</p>
+<ul>
+<li>MG_BitScoreCutoffs.uncalibrated.txt is a file consisting a list of marker gene names, randomly assigned cutoffs, and two 0 columns. </li>
+<li>shown in the following screenshot</li>
+
+</ul>
+</li>
+
+</ul>
+<p><img src="03112021.assets/Screen%20Shot%202021-03-11%20at%2011.56.18%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-11 at 11.56.18 PM"></p>
+
 
 <h1>Report 03/07/2021</h1>
 <h2>software preparation</h2>
