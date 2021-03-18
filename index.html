@@ -31,6 +31,229 @@
             <div id="readme" style="width:70%;margin-left:25%;">
                 <article class="markdown-body">
 
+><h1>Report 03/18/2021</h1>
+<h2>hmmbuild for HMM (Hidden Markov Model) profiles</h2>
+<ul>
+<li><p>HMM profiles are the basic files before using HMMER&#39;s searching method. It is essential for HMMER searching new homogenous sequences from a new set of sequences. </p>
+<ul>
+<li>The profiles will have the extension name ending as <span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="6.449ex" height="1.994ex" viewBox="0 -755.9 2776.7 858.4" role="img" focusable="false" style="vertical-align: -0.238ex;"><defs><path stroke-width="0" id="E2-MJMAIN-2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z"></path><path stroke-width="0" id="E2-MJMATHI-68" d="M137 683Q138 683 209 688T282 694Q294 694 294 685Q294 674 258 534Q220 386 220 383Q220 381 227 388Q288 442 357 442Q411 442 444 415T478 336Q478 285 440 178T402 50Q403 36 407 31T422 26Q450 26 474 56T513 138Q516 149 519 151T535 153Q555 153 555 145Q555 144 551 130Q535 71 500 33Q466 -10 419 -10H414Q367 -10 346 17T325 74Q325 90 361 192T398 345Q398 404 354 404H349Q266 404 205 306L198 293L164 158Q132 28 127 16Q114 -11 83 -11Q69 -11 59 -2T48 16Q48 30 121 320L195 616Q195 629 188 632T149 637H128Q122 643 122 645T124 664Q129 683 137 683Z"></path><path stroke-width="0" id="E2-MJMATHI-6D" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E2-MJMAIN-2E" x="0" y="0"></use><use xlink:href="#E2-MJMATHI-68" x="444" y="0"></use><use xlink:href="#E2-MJMATHI-6D" x="1020" y="0"></use><use xlink:href="#E2-MJMATHI-6D" x="1898" y="0"></use></g></svg></span><script type="math/tex">.hmm</script></li>
+<li>From this start point, I have re-read the <em>Microbial abundance, activity and population genomic profiling with mOTUs2</em>&#39;s method part to make sure how to build such profiles</li>
+
+</ul>
+</li>
+
+</ul>
+<h3>problems</h3>
+<ul>
+<li>In the original paper, there does not exist an explanation what should be the input file for building such profiles. </li>
+<li>In addition, the source code of fetchMGs does not contain any information of building profiles. </li>
+
+</ul>
+<h3>solutions</h3>
+<ol>
+<li><p>finding all papers related to the topic. The following papers contain information about build profiles, but all of papers do not have extensively detailed instructions for such task. </p>
+<ul>
+<li>metagenomic species profiling using universal phylogenetic marker genes</li>
+<li>accurate and universal delineation of prokaryotic species</li>
+<li>eggNOG v3.0: orthologous groups covering 1133 organisms at 41 different taxonomic ranges</li>
+<li>Toward Automatic Reconstruction of a Highly Resolved Tree of Life</li>
+<li>Universally Distributed Single-Copy Genes Indicate a Constant Rate of Horizontal Transfer</li>
+<li>Genome-wide experimental determination of barriers to horizontal gene transfer</li>
+
+</ul>
+</li>
+<li><p>finding dataset related to such task</p>
+<ul>
+<li><p>every paper have mentioned one the datasets from eggNOG study. </p>
+</li>
+<li><p>Therefore, I have been searching for all datasets related to eggNOG study. After the search, there are more datasets than expected since the study has evolved from version 1 to version 5. As a normal thought, I have downloaded the version 5&#39;s datasets which were thought to be the most comprehensive datasets. However,  they are impossible for me to open them locally and do extensive search in the dataset because they normally are larger than 9 GB. . By revisiting those papers, those papers built hmm profiles based on the version 3&#39;s datasets. </p>
+</li>
+<li><p>All version 3 datasets could be downloaded from the following link</p>
+<ul>
+<li><a href='http://eggnog.embl.de/version_3.0/downloads.html' target='_blank' class='url'>http://eggnog.embl.de/version_3.0/downloads.html</a></li>
+<li><img src="Report%2003152021.assets/Screen%20Shot%202021-03-18%20at%2012.52.21%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-18 at 12.52.21 PM"></li>
+<li>A screenshot for the website. </li>
+
+</ul>
+</li>
+<li><p>Since every paper has only investigated the COG members, the files which are related to the COG were the most valuable for me. </p>
+</li>
+<li><p>Furthermore, the hmmbuild program needs a multiple sequence alignment file in Stockholm file format as input in order to build profiles. I have downloaded the COG.alignments.tar.gz file under the Multiple Sequence Alignment section. </p>
+</li>
+<li><p>In the COG.alignments.tar.gz file, there are 2,163 files with name of COGxxxx.fasta. Each file is a concatenation of multiple sequences. The screenshot for COG0001.fasta is shown below. </p>
+<ul>
+<li><img src="Report%2003152021.assets/Screen%20Shot%202021-03-18%20at%2012.58.56%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-18 at 12.58.56 PM"></li>
+
+</ul>
+</li>
+<li><p>As mentioned in previous paragraph, the hmmbuild needs Stockholm file format as input. I have search a program on github to convert a multiple sequence alignment fasta file to Stockholm file. The source code is shown down below. </p>
+<ul>
+<li><pre><code class='language-perl' lang='perl'>#!/usr/bin/env perl -w
+
+BEGIN {
+    use FindBin;
+    use lib $FindBin::Bin;
+    push @INC, $FindBin::Bin;
+}
+
+my $usage = &quot;Usage: $0 &lt;gapped FASTA alignment file(s)&gt;\n&quot;;
+
+my @argv;
+while (@ARGV) {
+    my $arg = shift;
+    if ($arg =~ /^-/) {
+	if ($arg eq &quot;-h&quot;) { print $usage; exit }
+	else { die $usage }
+    } else {
+	push @argv, $arg;
+    }
+}
+push @argv, &quot;-&quot; unless @argv;
+
+# loop through FASTA files
+foreach my $fasta (@argv) {
+# read FASTA file
+    my %seq;
+    my @name;
+    my $name;
+    open FASTA, &quot;&lt;$fasta&quot; or die &quot;Couldn&#39;t open &#39;$fasta&#39;: $!&quot;;
+    while (&lt;FASTA&gt;) {
+	if (/^\s*&gt;\s*(\S+)/) {
+	    $name = $1;
+	    die &quot;Duplicate name: $name&quot; if defined $seq{$name};
+	    push @name, $name;
+	} else {
+	    if (/\S/ &amp;&amp; !defined $name) {
+		warn &quot;Ignoring: $_&quot;;
+	    } else {
+		s/\s//g;
+		$seq{$name} .= $_;
+	    }
+	}
+    }
+    close FASTA;
+
+# check all seqs are same length
+    my $length;
+    my $lname;
+    foreach my $name (@name) {
+	my $l = length $seq{$name};
+	if (defined $length) {
+	    die &quot;Sequences not all same length ($lname is $length, $name is $l)&quot; unless $length == $l;
+	} else {
+	    $length = length $seq{$name};
+	    $lname = $name;
+	}
+    }
+
+# print Stockholm output
+    print &quot;# STOCKHOLM 1.0\n&quot;;
+    foreach my $name (@name) {
+	print $name, &quot; &quot;, $seq{$name}, &quot;\n&quot;;
+    }
+    print &quot;//\n&quot;;
+}
+
+</code></pre>
+</li>
+<li><p>by using the following command to translate the fasta file to a Stockholm file</p>
+</li>
+<li><pre><code class='language-shell' lang='shell'>perl fasta2stockholm.pl COG0001.fasta &gt;&gt; COG0001.sto
+</code></pre>
+</li>
+<li><p>After running the command, we will have a .sto file on the drive, which will be similar to the following screenshot. </p>
+</li>
+<li><p><img src="Report%2003152021.assets/Screen%20Shot%202021-03-18%20at%201.03.52%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-18 at 1.03.52 PM"></p>
+</li>
+<li><p>The interpretation of the .sto file is simple, it has only two columns of data. </p>
+<ul>
+<li>the first column is sequence names</li>
+<li>the second column is corresponding sequences</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ol>
+<ul>
+<li><p>Once the alignment file was built, the profile can be easily built by using the following command</p>
+<ul>
+<li><pre><code class='language-shell' lang='shell'>hmmbuild COG0001.hmm COG0001.sto
+</code></pre>
+</li>
+<li><p>the .hmm file is what we want for the further exploration of the program. </p>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<h3>Remaining Tasks (solved)</h3>
+<ul>
+<li><p>To build the exact same profile as the program</p>
+<ul>
+<li>In this part, I only explore how to build profiles from the basic. There are more complicated method been used for constructing the method. Furthermore, the datasets which were used are different from the original study. </li>
+<li>The original study used 1,497 prokaryotic genomes downloaded from the NCBI. </li>
+
+</ul>
+</li>
+<li><p>The original paper used eggNOG version 2&#39;s annotation. Here, I used version3&#39;s annotation. </p>
+</li>
+
+</ul>
+<h2>cutoffs</h2>
+<ul>
+<li><p>The cutoffs are not pre-determined by the user. But it is calculated by the output of hmmsearch program. </p>
+</li>
+<li><p><strong>Important: in order to get cutoffs, it is important to have the profiles first.</strong></p>
+</li>
+<li><p>The following is the command to build calibrated cutoffs for verybesthit.txt, which is the file for searching the marker gene in sequences. </p>
+<ul>
+<li><p>the verybesthit.txt is the following picture. </p>
+<ul>
+<li><img src="Report%2003152021.assets/Screen%20Shot%202021-03-15%20at%202.53.38%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-15 at 2.53.38 PM"></li>
+
+</ul>
+</li>
+<li><p>the first column is a list of marker genes</p>
+</li>
+<li><p>the second column is a list of calibrated cutoffs. </p>
+</li>
+<li><p>the third column is a list of max precision of its corresponding marker gene</p>
+</li>
+<li><p>the forth column is a list of max recall of its corresponding marker gene</p>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<h3>how to calibrate the cutoffs</h3>
+<ul>
+<li><pre><code>/fetchMGs.pl -m calibration example_data_genomes.faa COG.members.txt -o calibration_3 -v
+</code></pre>
+</li>
+<li><p>Basically, the program uses hmmsearch to predict what should be the sequences of a corresponding marker gene. </p>
+</li>
+<li><p>Then, by using the actual mapping to calibrate the cutoff. </p>
+</li>
+<li><p>The actual mapping file is shown down below</p>
+<p><img src="Report%2003152021.assets/Screen%20Shot%202021-03-15%20at%202.19.42%20PM.jpg" referrerpolicy="no-referrer" alt="Screen Shot 2021-03-15 at 2.19.42 PM"></p>
+<ul>
+<li>the first column is gene name in eggNOG project</li>
+<li>the second column is the corresponding COG string. </li>
+
+</ul>
+</li>
+
+</ul>
+
+
 <h1>03/11/2021</h1>
 <h2>input files</h2>
 <h3>what the input file looks like</h3>
